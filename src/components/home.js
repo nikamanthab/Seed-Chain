@@ -6,7 +6,13 @@ import './css/home.css'
 
 console.log(Slideout);
 class Home extends Component {
-  
+  button={
+    width:"100%"
+  }
+
+  menumystyle={
+    background:"yellow"
+  }
   style={
     transform: "translateX(256px)"
   }
@@ -38,11 +44,12 @@ class Home extends Component {
     return (
       <div>
         {/* style={this.display} */}
-        <nav id="menu" style={{overflow:"hidden"}} >
+        {/* style={{overflow:"hidden"}} */}
+        <nav id="menu"  style={this.menumystyle}>
           <header>
-            
             <h2>Menu</h2>
           </header>
+          <button style={this.button}>Link1</button>
         </nav>
         {/* style={this.style} */}
         <main id="panel" >

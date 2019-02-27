@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import {Router} from "@reach/router";
-// import './css/signupcard.css';
+import './css/signupcard1.css';
 class Signup extends Component {
 
     constructor(props){
