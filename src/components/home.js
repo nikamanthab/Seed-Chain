@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 // import './css/home.css';
 // import './../slideout-master/dist/slideout';
 import Slideout from 'slideout';
-import './css/home.css'
+import './css/home.css';
+import HomeContainer from './homecontainer';
 
 console.log(Slideout);
 class Home extends Component {
+  //state variables
+  state={
+    link:1
+  }
+
+  //styles
   button={
     width:"100%"
   }
@@ -13,9 +20,11 @@ class Home extends Component {
   menumystyle={
     background:"yellow"
   }
+
   style={
     transform: "translateX(256px)"
   }
+  
   display={
     display:"block",
     overflow:"hidden"
@@ -40,6 +49,18 @@ class Home extends Component {
     this.slideout.toggle();
   }
 
+  handleLink1click = () =>{
+    this.setState({link:1})
+  }
+
+  handleLink2click = () =>{
+    this.setState({link:2})
+  }
+  
+  handleLink3click = () =>{
+    this.setState({link:3})
+  }
+
   render() {
     return (
       <div>
@@ -49,7 +70,9 @@ class Home extends Component {
           <header>
             <h2>Menu</h2>
           </header>
-          <button style={this.button}>Link1</button>
+          <button onClick={this.handleLink1click} style={this.button}>Link1</button>
+          <button onClick={this.handleLink2click} style={this.button}>Link2</button>
+          <button onClick={this.handleLink3click} style={this.button}>Link3</button>
         </nav>
         {/* style={this.style} */}
         <main id="panel" >
@@ -57,6 +80,7 @@ class Home extends Component {
         <button className="toggle-button" onClick={this.handleham}>☰</button>
         <h2>Panel</h2>
       </header>
+        <HomeContainer link={this.state.link}/>
         </main>
       </div>
     );

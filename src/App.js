@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Router} from "@reach/router";
 import Login from './components/login';
-import Userpage from './components/otppage';
+import Userpage from './components/userpage';
 import Signup from './components/signup';
 import Home from './components/home';
+import './App.css';
 
 class App extends Component {
   

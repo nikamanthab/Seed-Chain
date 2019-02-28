@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { navigate } from '@reach/router';
+// import { navigate } from '@reach/router';
 // import {Router,Link} from "@reach/router";
-
+import Home from './home';
+import passwordHash from 'password-hash';
+// import passwordHashverify from './lib/password-hash';
 class Userpage extends Component {
 
     constructor(props){
@@ -19,8 +21,6 @@ class Userpage extends Component {
 
 
     //http request to post otp....
-    
-        
     httppostotp=(otp)=>{
         const invocation = new XMLHttpRequest();
         const url = 'http://192.168.43.74:3400/sendotp';
@@ -71,14 +71,18 @@ class Userpage extends Component {
         let url = window.location.href.split('/');
         let urllen = url.length;
         let email = this.state.email;
-        let arg = {otp,email}
-        console.log(arg);
+        
+        //hashing the password
+        var hashedPassword = passwordHash.generate(String(otp));
+        console.log(hashedPassword);
+        console.log(otp);
         
         //calling http request to send otp
+        let arg = {otp:hashedPassword,email}
         this.httppostotp(JSON.stringify(arg));
 
         this.setState({
-            correctotp:+otp,
+            correctotp:hashedPassword,
             url:url,
             urllen
         })
@@ -92,10 +96,15 @@ class Userpage extends Component {
     }
 
     handleSubmitClick = () => {
-        if(this.state.correctotp === this.state.otp){
+        // var hashedInput = passwordHash.generate(String(this.state.otp));
+        // console.log(hashedInput);
+
+        let hashedCorrect = this.state.correctotp;
+        console.log(passwordHash.verify(String(this.state.otp), hashedCorrect));
+        if( passwordHash.verify(String(this.state.otp), hashedCorrect)){
             console.log("success");
-            navigate(`/home/${this.state.url[this.state.urllen-1]}`);
-            // this.setState({loggedin:true})
+            //navigate(`/home/${this.state.url[this.state.urllen-1]}`);
+            this.setState({loggedin:true})
         }
     }
 
@@ -117,13 +126,12 @@ class Userpage extends Component {
                 </div>
                 );
         }
-        // else{
-        //     return(
-        //         <div >
-        //              hmmmm
-       //         </div>
-        //     )
-        // }
+
+        if(this.state.loggedin===true){
+            return(
+                <Home userid={this.state.url[this.state.urllen-1]}/>
+            )
+        }
     }
 }
 
