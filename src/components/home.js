@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Slideout from 'slideout';
 import './css/home.css';
 import HomeContainer from './homecontainer';
+import { navigate } from '@reach/router';
+import MenuContainer from './menucontainer';
 
 console.log(Slideout);
 class Home extends Component {
@@ -61,18 +63,21 @@ class Home extends Component {
     this.setState({link:3})
   }
 
+  handleLogOutButton = () =>{
+    navigate('/');
+  }
+
   render() {
     return (
       <div>
         {/* style={this.display} */}
-        {/* style={{overflow:"hidden"}} */}
-        <nav id="menu"  style={this.menumystyle}>
+        {/* } */}
+        <nav id="menu"  style={{overflow:"hidden"}}>
           <header>
             <h2>Menu</h2>
           </header>
-          <button onClick={this.handleLink1click} style={this.button}>Link1</button>
-          <button onClick={this.handleLink2click} style={this.button}>Link2</button>
-          <button onClick={this.handleLink3click} style={this.button}>Link3</button>
+          <MenuContainer/>
+          <button onClick={this.handleLogOutButton} style={this.button}>Logout</button>
         </nav>
         {/* style={this.style} */}
         <main id="panel" >

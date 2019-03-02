@@ -15,7 +15,6 @@ class Userpage extends Component {
             url:'',
             urllen:0,
             loggedin:false,
-            email:"nitinnikamanth@gmail.com"
         }
     }
 
@@ -35,15 +34,6 @@ class Userpage extends Component {
             invocation.setRequestHeader('Access-Control-Allow-Origin', 'http://192.168.43.74:3400/');
             invocation.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             invocation.onreadystatechange = function() {
-                if(this.readyState==2){
-                    console.log("helloefjekfj");
-                }
-                if(this.readyState==3){
-                    console.log("hello9999");
-                }
-                if(this.readyState==1){
-                    console.log("hello");
-                }
                       if (this.readyState === 4 && this.status === 200) {
                         // document.getElementById("demo").innerHTML = this.responseText;
                         console.log(this.responseText);
@@ -70,8 +60,8 @@ class Userpage extends Component {
         let otp = this.generaterandomno();
         let url = window.location.href.split('/');
         let urllen = url.length;
-        let email = this.state.email;
-        
+        // let email = this.state.email;
+        let email = window.location.href.split('/')[urllen-2];
         //hashing the password
         var hashedPassword = passwordHash.generate(String(otp));
         console.log(hashedPassword);
@@ -121,6 +111,7 @@ class Userpage extends Component {
                     <h2>
                         Welcome back {this.state.url[this.state.urllen-1]}
                     </h2>
+                    <p>enter the otp</p>
                     <input type="text" onChange={this.onOtpFieldChange}/>
                     <button onClick={this.handleSubmitClick}>Submit</button>
                 </div>
