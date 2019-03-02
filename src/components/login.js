@@ -15,8 +15,9 @@ class Login extends Component {
           }
     }    
 
-    handleLoginRouteChange = ()=>{
-        navigate(`/userpage/${this.state.metamaskemail}/${this.state.metamaskuser}`)
+    handleLoginRouteChange = (email,uname)=>{
+        //navigate(`/userpage/${this.state.metamaskemail}/${this.state.metamaskuser}`)
+        navigate(`/userpage/${email}/${uname}`);
     }
 
     // handleUserIdChange = event =>{ 
@@ -30,9 +31,11 @@ class Login extends Component {
         //fetch the users...
         //from the web3 lib
         web3init().then((api)=>{
-            return  api.verify();
-        }).then(()=>{
-            this.handleLoginRouteChange();
+            console.log(api.account);
+            return  api.getUserInfo(api.account);
+        }).then((d)=>{
+            console.log(d);
+            this.handleLoginRouteChange(d[3],d[0]);
         }).catch((e)=>{
             console.log(e);
             alert("User not registered Please signup first !!");
@@ -75,7 +78,7 @@ class Login extends Component {
             <h3 className="wrap boldfont padd text-center white"> <i className="fas fa-seedling"></i> Seed <i id="rotate" className="fas fa-link"></i>
                 Chain</h3>
         </div>
-    </div>
+ </div>
     <div className="container">
         <div className="row">
             <div className="col-sm-6">

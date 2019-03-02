@@ -72,7 +72,7 @@ function listInventory(){
         user.methods.getOwns().send({from:account}).then((d)=>{
           d.forEach(async (data)=>{
               try{
-              result.push(await item.methods.getDetails(data).call());
+              result.push(await item.methods.getdetails(data).call());
               }catch(err){
                   rej(fillErr(err));
               }
@@ -85,13 +85,13 @@ function listInventory(){
 
 function getUserInfo(address){
     return new Promise((res,rej)=>{
-        user.methods.getDetails(address).call().then((d)=>res(d)).catch((err) => rej(fillErr(err)));
+        user.methods.getdetails(address).call().then((d)=>res(d)).catch((err) => rej(fillErr(err)));
     })
 }
 
 function searchProduct(prod){
     return new Promise((res,rej)=>{
-        item.methods.getDetails(prod).call().then((d)=>res(d)).catch(err=> rej(fillErr(err)));
+        item.methods.getdetails(prod).call().then((d)=>res(d)).catch(err=> rej(fillErr(err)));
     })
 }
 
@@ -155,6 +155,7 @@ account
 
 function init(_account){
 account=_account;
+publicApi.account=account;
 return publicApi;
 }
 
