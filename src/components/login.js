@@ -38,17 +38,43 @@ class Login extends Component {
 
     render() {
         return (
-        <div>
-            <h1>Login page</h1>
-            {/* <input type="text" 
-            onChange={this.handleUserIdChange}
-            /> */}
-            <button 
-             onClick={this.handleLoginClick}
-            >Login</button>
+        // <div>
+        //     <h1>Login page</h1>
+        //     {/* <input type="text" 
+        //     onChange={this.handleUserIdChange}
+        //     /> */}
+        //     <button 
+        //      onClick={this.handleLoginClick}
+        //     >Login</button>
 
-            <Signup />
+        //     <Signup />
+        // </div>
+        <div>
+ <div className="row">
+        <div className="col-sm-12">
+            <h3 className="wrap boldfont padd text-center white"> <i className="fas fa-seedling"></i> Seed <i id="rotate" className="fas fa-link"></i>
+                Chain</h3>
         </div>
+    </div>
+    <div className="container">
+        <div className="row">
+            <div className="col-sm-6">
+                <br/><br/><br/><br/> <br/><br/><br/><br/>
+                <h3 className="boldfont padd  text-center resetletter">Already a seller or a manufacturer ?</h3>
+                <button onClick={this.handleLoginClick} className="btn wrap primaryfont extend white">Log in</button>
+            </div>
+            <div className="col-sm-6 paddfix">
+                <br/><br/><br/>
+
+                <Signup />
+            </div>
+        </div>
+    </div>
+<footer className="footer">
+    <p className="text-center  white wrap primaryfont">&copy; Seed Chain 2019 - Bytemechanics @ NONCE</p>
+</footer>
+      </div>     
+
         );
     }
 }

@@ -7,7 +7,7 @@ import Home from './components/home';
 
 import './App.css';
 // import './components/css/all.css';
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import web3 from './integration';
 import Producemodule from './components/producemodule';

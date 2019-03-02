@@ -1,6 +1,6 @@
 import Web3 from './web3';
 
-let addressuser = '0xF5bFa1c07df5FbFd09da9C046F5206EBd32e926D';
+let addressuser = '0x942253A89a77CdD629a0422b4AF558Bb176FfdC0';
 let abiuser = [{
     "constant": true,
     "inputs": [{
@@ -142,10 +142,23 @@ let abiuser = [{
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
-}];
-
+}]
 
 let abiitem = [{
+    "constant": false,
+    "inputs": [{
+        "name": "_id",
+        "type": "address"
+    }],
+    "name": "checkOwnership",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
     "constant": false,
     "inputs": [{
         "name": "_address",
@@ -176,20 +189,6 @@ let abiitem = [{
 }, {
     "constant": true,
     "inputs": [{
-        "name": "_id",
-        "type": "address"
-    }],
-    "name": "checkDiscard",
-    "outputs": [{
-        "name": "",
-        "type": "bool"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [{
         "name": "",
         "type": "uint256"
     }],
@@ -202,47 +201,33 @@ let abiitem = [{
     "stateMutability": "view",
     "type": "function"
 }, {
-    "constant": false,
+    "constant": true,
     "inputs": [{
-        "name": "_id",
+        "name": "_address",
         "type": "address"
     }],
-    "name": "checkownership",
+    "name": "getDetails",
     "outputs": [{
         "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{
-        "name": "_ispacket",
-        "type": "bool"
-    }, {
-        "name": "isfinal",
-        "type": "bool"
-    }, {
-        "name": "_name",
         "type": "string"
     }, {
-        "name": "_weight",
-        "type": "uint32"
-    }, {
-        "name": "_date",
-        "type": "uint32"
-    }, {
-        "name": "_expd",
-        "type": "uint32"
-    }],
-    "name": "createAsset",
-    "outputs": [{
         "name": "",
-        "type": "address"
+        "type": "uint32"
+    }, {
+        "name": "",
+        "type": "uint32"
+    }, {
+        "name": "",
+        "type": "uint32"
+    }, {
+        "name": "",
+        "type": "bool"
+    }, {
+        "name": "",
+        "type": "bool"
     }],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
 }, {
     "constant": false,
@@ -257,6 +242,31 @@ let abiitem = [{
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "_address",
+        "type": "address"
+    }],
+    "name": "finalize",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "",
+        "type": "uint256"
+    }],
+    "name": "tr",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
 }, {
     "constant": true,
@@ -286,14 +296,20 @@ let abiitem = [{
 }, {
     "constant": false,
     "inputs": [{
-        "name": "_newid",
+        "name": "receiver",
         "type": "address"
     }, {
-        "name": "_id",
+        "name": "id",
         "type": "address"
+    }, {
+        "name": "_date",
+        "type": "uint256"
     }],
-    "name": "statepush",
-    "outputs": [],
+    "name": "transact",
+    "outputs": [{
+        "name": "",
+        "type": "string"
+    }],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -325,6 +341,9 @@ let abiitem = [{
     }, {
         "name": "ispacket",
         "type": "bool"
+    }, {
+        "name": "is_batched",
+        "type": "bool"
     }],
     "payable": false,
     "stateMutability": "view",
@@ -335,36 +354,51 @@ let abiitem = [{
         "name": "_id",
         "type": "address"
     }],
-    "name": "discard",
-    "outputs": [],
+    "name": "getCurid",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
     "constant": false,
     "inputs": [{
-        "name": "receiver",
-        "type": "address"
+        "name": "_ispacket",
+        "type": "bool"
     }, {
-        "name": "id",
-        "type": "address"
+        "name": "_name",
+        "type": "string"
+    }, {
+        "name": "_weight",
+        "type": "uint32"
+    }, {
+        "name": "_date",
+        "type": "uint32"
+    }, {
+        "name": "_expd",
+        "type": "uint32"
     }],
-    "name": "transact",
+    "name": "createAsset",
     "outputs": [{
         "name": "",
-        "type": "string"
+        "type": "address"
     }],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
+    "constant": false,
     "inputs": [],
+    "name": "items",
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor"
+    "type": "function"
 }]
 
-let addressitem = '0x7A1B9Fa58b3815b72f6e5210CEC35DB2126b4A38';
+let addressitem = '0xBF133C50E51dE7FE89Ca7F5fa5f3816C0612fCbd';
 var user = new Web3.eth.Contract(abiuser, addressuser);
 var item = new Web3.eth.Contract(abiitem, addressitem);
 

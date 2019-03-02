@@ -28,6 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "parcel-bundler": "^1.11.0"
   }
 }
