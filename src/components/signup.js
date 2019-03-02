@@ -25,9 +25,9 @@ class Signup extends Component {
 
   
 
-    componentDidMount=async ()=>{
+    // componentDidMount=async ()=>{
        
-    }
+    // }
 
     // generaterandomno = ()=>{
     //     const min=1000; 

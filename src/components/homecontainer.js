@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Transact from './transact';
 import Inventry from './inventry';
+// import Batchpage from './batch';
+import Produce from './produce';
+import Track from './track'
 
 class App extends Component {
   
@@ -10,24 +13,34 @@ class App extends Component {
 
     if(page === 1){
         return (
-            <Transact/>
+            <Produce/>
           );
     }
 
     else if(page === 2){
         return (
-            <Inventry/>
+            // <Batch/>
+            <div>batch</div>
           );
     }
 
     else if(page === 3){
-        return (
-            <div>
-              Hello world {page}
-            </div>
-          );
+      return (
+          <Inventry/>
+        );
+  }
+
+  else if(page === 4){
+    return (
+        <Transact/>
+      );
     }
-   
+
+  else if(page === 5){
+    return (
+        <Track/>
+      );
+    }
   }
 }
 

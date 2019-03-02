@@ -15,7 +15,7 @@ class Userpage extends Component {
             url:'',
             urllen:0,
             loggedin:false,
-            access:""
+            access:true
         }
     }
 
@@ -69,11 +69,12 @@ class Userpage extends Component {
         console.log(otp);
         
         //calling http request to send otp
-        let arg = {otp:hashedPassword,email}
+        let arg = {otp:otp,email}
+        console.log(arg);
         this.httppostotp(JSON.stringify(arg));
 
         //getting ismanager boolean call
-        let boolman = true;
+        let boolman = false;
 
 
         this.setState({
@@ -126,7 +127,9 @@ class Userpage extends Component {
 
         if(this.state.loggedin===true){
             return(
-                <Home userid={this.state.url[this.state.urllen-1]}/>
+                <div>
+                    <Home isman={this.state.access} userid={this.state.url[this.state.urllen-1]}/>
+                </div>
             )
         }
     }
