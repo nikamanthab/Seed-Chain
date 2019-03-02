@@ -15,6 +15,7 @@ class Userpage extends Component {
             url:'',
             urllen:0,
             loggedin:false,
+            access:""
         }
     }
 
@@ -71,10 +72,15 @@ class Userpage extends Component {
         let arg = {otp:hashedPassword,email}
         this.httppostotp(JSON.stringify(arg));
 
+        //getting ismanager boolean call
+        let boolman = true;
+
+
         this.setState({
             correctotp:hashedPassword,
             url:url,
-            urllen
+            urllen,
+            access:boolman
         })
     }
 
