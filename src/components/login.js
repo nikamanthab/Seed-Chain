@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 // import {Router,Link} from "@reach/router";
 import Signup from './signup';
+import web3init from './../web3init';
+
 class Login extends Component {
 
     constructor(props){
@@ -27,9 +29,27 @@ class Login extends Component {
         //
         //fetch the users...
         //from the web3 lib
-        let web3libuser = "mohan"        
-        if(this.state.metamaskuser === web3libuser)
+        web3init().then((api)=>{
+            return  api.verify();
+        }).then(()=>{
             this.handleLoginRouteChange();
+        }).catch((e)=>{
+            console.log(e);
+            alert("User not registered Please signup first !!");
+        })
+        
+        // web3.eth.getAccounts().then((d)=>{
+        //     lib.init(d[0]).signUp(this.state.username, this.state.access==="manufactorer", this.state.phoneno, this.state.email)
+        //     .then(c=>{
+        //         console.log("success");
+        //         console.log(c);
+
+        //         navigate(`/userpage/${this.state.email}/${this.state.username}`)
+        //     }).catch(err=>{console.log(err)});
+
+        // let web3libuser = "mohan"        
+        // if(this.state.metamaskuser === web3libuser)
+        //     this.handleLoginRouteChange();
     }
 
     handleSignupClick = ()=>{

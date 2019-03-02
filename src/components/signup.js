@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 // import {Router} from "@reach/router";
 // import './css/signupcard1.css';
-import lib from './../userweb3';
-import web3 from './../web3';
-console.log(web3);
+import web3init from './../web3init';
+
 
 
 
@@ -58,17 +57,18 @@ class Signup extends Component {
         console.log(this.state.username);
         console.log(this.state.email);
         console.log(this.state.access);
-
-        //web3 create user function call............
-        web3.eth.getAccounts().then((d)=>{
-            lib.init(d[0]).signUp(this.state.username, this.state.access==="manufactorer", this.state.phoneno, this.state.email)
-            .then(c=>{
-                console.log("success");
-                console.log(c);
-
-                navigate(`/userpage/${this.state.email}/${this.state.username}`)
-            }).catch(err=>{console.log(err)});
-        });
+web3init().then((api)=>{
+    console.log(api);
+    api.signUp(this.state.username, this.state.access==="manufactorer", this.state.phoneno, this.state.email)
+    .then(c=>{
+        alert("Successfully signedup");
+        navigate(`/userpage/${this.state.email}/${this.state.username}`)
+    }).catch(err=>{console.log(err)});
+})
+        // //web3 create user function call............
+        // web3.eth.getAccounts().then((d)=>{
+        //     lib.init(d[0])
+        // });
 
 
 

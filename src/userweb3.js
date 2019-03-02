@@ -29,7 +29,7 @@ function signUp(name, isMan, phno, mail) {
 
 function verify() {
     return new Promise((res, rej) => {
-        user.methods.verify().call().then(() => res(true)).catch((err) => rej(fillErr(err)));
+        user.methods.verify(account).call().then(() => res(true)).catch((err) => rej(fillErr(err)));
     });
 
 }
@@ -148,7 +148,8 @@ track,
 finalize,
 createBatch,
 searchProduct,
-produceItem
+produceItem,
+account
 }
 
 

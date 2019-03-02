@@ -14,18 +14,6 @@ class Producemodule extends Component {
         }
     }     
 
-  
-
-    // componentDidMount=async ()=>{
-       
-    // }
-
-    // generaterandomno = ()=>{
-    //     const min=1000; 
-    //     const max=9999;  
-    //     let random =Math.floor(Math.random() * (+max - +min)) + +min; 
-    //     return random;  
-    // }
 
 
     handleNameOnChange = (event)=>{
@@ -80,6 +68,12 @@ class Producemodule extends Component {
         return (
         <div>
             <div className="producemodule">
+            <div className="row">
+                <div className="col-sm-12">
+                    <h3 className="wrap boldfont padd text-center white"> <i className="fas fa-seedling"></i> Seed <i id="rotate" className="fas fa-link"></i>
+                        Chain</h3>
+                    </div>
+                </div>
                 <form  className="productform" name="productform">
                     <h2>Produce items in Blockchain</h2>
                     <ul className="noBullet">
