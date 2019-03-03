@@ -98,13 +98,13 @@ function listInventory() {
     return new Promise((res, rej) => {
         var result = [];
         user.methods.getOwns(account).call().then((d) => {
-            console.log(d);
-            console.log(d.length);
+          
             var rest=async function(){
              for(let data of d){
                  let dos=await item.methods.getdetails(data).call();
                  result.push(dos);
                  if(result.length==d.length){
+                     result.push(d);
                      return result;
                  }
              }
@@ -140,8 +140,8 @@ function searchProduct(prod) {
 
 function createBatch(arr, isFinal, name, weight, date, exp) {
     return new Promise((res, rej) => {
-        produceItem(false, true, name, weight, date, exp).then((d) => {
-         item.methods.batch(arr,d).send({from:account}).then(res=>res(true)).catch("");
+        produceItem(false, name, weight, date, exp).then((d) => {
+         item.methods.createBatch(arr,d).send({from:account}).then(()=>res(true)).catch("");
         }).catch(err => rej(fillErr(err)));
     });
 }
