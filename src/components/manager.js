@@ -107,14 +107,12 @@ class Manager extends Component {
                 <button onClick={this.handleLink2click} style={this.button}>Batch</button>
                 </div>
                 <div className="row">
-                <button onClick={this.handleLink3click} style={this.button}>Inventry</button>
+                <button onClick={this.handleLink3click} style={this.button}>Inventory</button>
                 </div>
                 <div className="row">
                 <button onClick={this.handleLink4click} style={this.button}>Transact</button>
                 </div>
-                <div className="row">
-                <button onClick={this.handleLink5click} style={this.button}>Track</button>
-                </div>
+                
                 
                 <div className="row">
                 <button className="align-bottom" onClick={this.handleLogOutButton} style={this.button}>Logout</button>

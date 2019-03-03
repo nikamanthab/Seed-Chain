@@ -89,9 +89,8 @@ class Seller extends Component {
                 <header>
                 </header>
                 <img src={url}></img>
-                <button onClick={this.handleLink3click} styel={this.button}>Inventry</button>
+                <button onClick={this.handleLink3click} styel={this.button}>Inventory</button>
                 <button onClick={this.handleLink4click} styel={this.button}>Transact</button>
-                <button onClick={this.handleLink5click} styel={this.button}>Track</button>
                 
 
                 <button onClick={this.handleLogOutButton} style={this.button}>Logout</button>
