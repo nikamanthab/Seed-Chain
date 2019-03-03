@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import web3init from './../web3init';
 // import fillingTheInputElements from './js/socketinput';
 
 class Transact extends Component {
@@ -34,7 +35,10 @@ class Transact extends Component {
     handleClick = ()=>{
         // this.fillingTheInputElements("nitin");
         // this.setState({textcontent:"nitin"});
-        
+        web3init.transact().then((data)=>{
+            console.log(data);
+        })
+
     }
 
   render() {

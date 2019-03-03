@@ -3,12 +3,14 @@ import {Router} from "@reach/router";
 import Slideout from 'slideout';
 import { navigate } from '@reach/router';
 import HomeContainer from './homecontainer';
+import web3init from './../web3init';
 
 class Manager extends Component {
 
     //state variables
   state={
-    link:1
+    link:1,
+    accountid:""
   }
 
   //styles
@@ -42,6 +44,10 @@ class Manager extends Component {
       document.querySelector(".toggle-button").style.display="none";
       this.slideout.open();
     }
+
+    web3init().then((api)=>{
+      return (api.account);
+    }).then((data)=>{this.setState({accountid:data})});
  
   }
 
@@ -74,10 +80,12 @@ class Manager extends Component {
   }
 
   render() {
+    
     let urllen = window.location.href.split('/').length;
     let email = window.location.href.split('/')[urllen-2];
     let uname = window.location.href.split('/')[urllen-1];
-    let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${email}-${uname}-verifieduser`;
+    console.log("aaaaaa",this.state.accountid);
+    let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${this.state.accountid}-${uname}-verifieduser`;
     console.log(url);
     return (
       <div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Transact from './transact';
 import Inventry from './inventry';
-// import Batchpage from './batch';
+import BatchComp from './batchcomp';
 import Produce from './producemodule';
 import Track from './track'
 
@@ -19,8 +19,8 @@ class App extends Component {
 
     else if(page === 2){
         return (
-            //  <BatchComp/>
-            <div>batch</div>
+             <BatchComp/>
+            // <div>batch</div>
           );
     }
 
