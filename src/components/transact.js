@@ -3,15 +3,33 @@ import React, { Component } from 'react';
 
 class Transact extends Component {
   
-    state={
-        textcontent:'content'
+    constructor(props){
+        super(props);
+
+        this.state={
+            sender:"",
+            receiver:"",
+            productid:""
+        }
     }
 
-    fillingTheInputElements = (str) => {
-        // let ele = document.querySelector(`.${element}`);
-        // ele.textContent = str;
-        this.setState({textcontent:"nitin"});
+    handleSenderOnChange = (event)=>{
+        this.setState({sender:event.target.value})
     }
+
+    handleReceiverOnChange = (event)=>{
+        this.setState({receiver:event.target.value})
+    }
+
+    handleProductidOnChange = (event)=>{
+        this.setState({productid:event.target.value})
+    }
+
+    // fillingTheInputElements = (str) => {
+    //     // let ele = document.querySelector(`.${element}`);
+    //     // ele.textContent = str;
+    //     this.setState({textcontent:"nitin"});
+    // }
 
     handleClick = ()=>{
         this.fillingTheInputElements("nitin");
@@ -20,14 +38,36 @@ class Transact extends Component {
 
   render() {
       return(
-          <div>
+          <div className="container">
               <h1>Transact</h1>
-              <input id="textbox1" value={this.state.textcontent}/>
-              <input id="textbox2" type="text"/>
-              <button onClick={this.handleClick}>yoyo</button>
+              <ul className="noBullet">
+                  <li>
+                        <label htmlFor="sender"></label>
+                        <input type="text" className="form-control" id="sender" name="" placeholder="sender" onChange={this.handleSenderOnChange} required/>
+                  </li>
+                  <li>
+                            <label htmlFor="receiver"></label>
+                            <input type="text" className="form-control" id="receiver" name="receiver" placeholder="receiver" onChange={this.handleReceiverOnChange} required/>
+                  </li>
+                  <li>
+                            <label htmlFor="productid"></label>
+                            <input type="text" className="form-control" id="productid" name="productid" placeholder="productid" onChange={this.handleProductidOnChange} required/>
+                 </li>
+                 <br/>
+              {/* <button onClick={this.handleClick}>yoyo</button> */}
+                 <li id="center-btn" align="center">
+                         <input  className="btn wrap primaryfont extend white" value="Submit" onClick={this.handleJoinClick} />
+                 </li>
+            </ul>
+            <br/>
+            <div className="card container shadow-sm bold medfont">
+                enter content here
+            </div>
           </div>
-      )
+         
+      );
   }
 }
 
 export default Transact;
+

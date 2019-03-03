@@ -29,7 +29,7 @@ class Inventry extends Component {
             
             console.log(api.account);
             return api.listInventory();
-        }).then((data)=>{console.log(data)}).catch(err=>{console.log(err)});
+        }).then((data)=>{console.log("hmmm",data)}).catch(err=>{console.log(err)});
     }
     handleTrackButton = () =>{
 

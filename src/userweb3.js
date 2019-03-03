@@ -94,11 +94,14 @@ console.log(account,...arguments);
 
 
 function listInventory() {
+    console.log("---------entered");
     return new Promise((res, rej) => {
         var result = [];
-        user.methods.getOwns().call().then((d) => {
+        user.methods.getOwns(account).call().then((d) => {
+            console.log(d);
             d.forEach(async (data) => {
                 try {
+                    console.log(data);
                     result.push(await item.methods.getdetails(data).call());
                 } catch (err) {
                     rej(fillErr(err));
