@@ -108,8 +108,9 @@ class Manager extends Component {
                 <button onClick={this.handleLink5click} style={this.button}>Track</button>
                 </div>
                 
-
+                <div className="row align-bottom">
                 <button onClick={this.handleLogOutButton} style={this.button}>Logout</button>
+                </div>
                 </div>
             </nav>
             {/* style={this.style} */}

@@ -85,7 +85,7 @@ class Producemodule extends Component {
             }
             console.log(arr);
 /////////////////////
-            this.httppost(JSON.stringify({arr}));
+            this.httppost(JSON.stringify({arr,account:api.account}));
 
             return arr;
         }

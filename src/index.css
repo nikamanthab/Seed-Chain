@@ -112,3 +112,13 @@
 .marginrem{
     margin-bottom: none;
 }
+
+.row{
+    position: relative;
+}
+
+.align-bottom{
+        position: absolute;
+        bottom:0;
+        left:0;
+}
