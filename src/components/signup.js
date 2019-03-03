@@ -57,6 +57,7 @@ class Signup extends Component {
         console.log(this.state.username);
         console.log(this.state.email);
         console.log(this.state.access);
+        // navigate(`/userpage/itsmohanpierce@gmail.com/mohan`)
 web3init().then((api)=>{
     console.log(api);
     api.signUp(this.state.username, this.state.access==="manufactorer", this.state.phoneno, this.state.email)

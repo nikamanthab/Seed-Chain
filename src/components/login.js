@@ -32,7 +32,7 @@ class Login extends Component {
         //from the web3 lib
         web3init().then((api)=>{
             console.log(api.account);
-            return  api.getUserInfo(api.account);
+            return api.getUserInfo(api.account)
         }).then((d)=>{
             console.log(d);
             this.handleLoginRouteChange(d[3],d[0]);

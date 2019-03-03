@@ -77,7 +77,8 @@ class Userpage extends Component {
         this.httppostotp(JSON.stringify(arg));
 
         //getting ismanager boolean call
-        let boolman = false;
+        
+            let boolman = true;
 
 
         this.setState({

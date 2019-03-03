@@ -20,9 +20,10 @@ class Manager extends Component {
     background:"yellow"
   }
 
-  style={
-    transform: "translateX(256px)"
-  }
+  // style={
+  //   transform: "translateX(256px)"
+  //   `margin-right: 256px` 
+  // }
   
   display={
     display:"block",
@@ -73,35 +74,51 @@ class Manager extends Component {
   }
 
   render() {
+    let urllen = window.location.href.split('/').length;
+    let email = window.location.href.split('/')[urllen-2];
+    let uname = window.location.href.split('/')[urllen-1];
+    let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${email}-${uname}-verifieduser`;
+    console.log(url);
     return (
       <div>
-        <div>
             {/* style={this.display} */}
             {/* } */}
             <nav id="menu"  style={{overflow:"hidden"}}>
                 <header>
-                <h2>Menu</h2>
-                </header>
-                <img src="https://cdn0.froala.com/assets/blog/pages/post41-e7148f89802912ddd4c84b34506ae640.svg"></img>
-                <button onClick={this.handleLink1click} styel={this.button}>Produce</button>
-                <button onClick={this.handleLink2click} styel={this.button}>Batch</button>
-                <button onClick={this.handleLink3click} styel={this.button}>Inventry</button>
-                <button onClick={this.handleLink4click} styel={this.button}>Transact</button>
-                <button onClick={this.handleLink5click} styel={this.button}>Track</button>
 
+                </header>
+                <br/>
+                <div className="container">
+                <div className="row" align="center">
+                 <img src={url}></img>
+                </div>
+                <div className="row">
+                <button onClick={this.handleLink1click} style={this.button}>Produce</button>
+                </div>
+                <div className="row">
+                <button onClick={this.handleLink2click} style={this.button}>Batch</button>
+                </div>
+                <div className="row">
+                <button onClick={this.handleLink3click} style={this.button}>Inventry</button>
+                </div>
+                <div className="row">
+                <button onClick={this.handleLink4click} style={this.button}>Transact</button>
+                </div>
+                <div className="row">
+                <button onClick={this.handleLink5click} style={this.button}>Track</button>
+                </div>
                 
 
                 <button onClick={this.handleLogOutButton} style={this.button}>Logout</button>
+                </div>
             </nav>
             {/* style={this.style} */}
             <main id="panel" >
             <header>
             <button className="toggle-button" onClick={this.handleham}>☰</button>
-            <h2>Panel</h2>
             </header>
             <HomeContainer link={this.state.link}/>
             </main>
-        </div>
       </div>
     );
   }

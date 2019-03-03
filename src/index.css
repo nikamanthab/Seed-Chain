@@ -42,7 +42,7 @@
 }
 
 .wrap{
-    background:#33b65a;
+    background:#16bb48;
     
 }    
 .white{
@@ -59,7 +59,7 @@
     justify-content: space-around;
 }
 .paddfix{
-    padding-left: 6%;
+    padding-left: 10%;
 }
 .footer{
   margin-top:8vh;
@@ -82,3 +82,33 @@
     width: 50%;
 }
 
+.padrfix{
+    padding-right: 10%;
+}
+
+.smallfont{
+    font-family: 'boldfont';
+}
+
+.medfont{
+    font-family: 'boldfont';
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.panelfix{
+    margin-right: 256px;
+}
+
+/* .riyacard{
+    position: relative;
+    top:-10px;
+    transform: translateY(-50px);
+    left:50%;
+    align-content: center;
+
+} */
+
+.marginrem{
+    margin-bottom: none;
+}

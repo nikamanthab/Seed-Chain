@@ -73,6 +73,13 @@ class Seller extends Component {
   }
 
   render() {
+
+    let urllen = window.location.href.split('/').length;
+    let email = window.location.href.split('/')[urllen-2];
+    let uname = window.location.href.split('/')[urllen-1];
+    let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${email}-${uname}-verifieduser`;
+    console.log(url);
+
     return (
       <div>
         <div>
@@ -80,9 +87,8 @@ class Seller extends Component {
             {/* } */}
             <nav id="menu"  style={{overflow:"hidden"}}>
                 <header>
-                <h2>Menu</h2>
                 </header>
-                <img src="https://cdn0.froala.com/assets/blog/pages/post41-e7148f89802912ddd4c84b34506ae640.svg"></img>
+                <img src={url}></img>
                 <button onClick={this.handleLink3click} styel={this.button}>Inventry</button>
                 <button onClick={this.handleLink4click} styel={this.button}>Transact</button>
                 <button onClick={this.handleLink5click} styel={this.button}>Track</button>
@@ -91,10 +97,9 @@ class Seller extends Component {
                 <button onClick={this.handleLogOutButton} style={this.button}>Logout</button>
             </nav>
             {/* style={this.style} */}
-            <main id="panel" >
+            <main id="panel" className = "panelfix">
             <header>
             <button className="toggle-button" onClick={this.handleham}>☰</button>
-            <h2>Panel</h2>
             </header>
             <HomeContainer link={this.state.link}/>
             </main>

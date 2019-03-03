@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import web3init from './../web3init';
 
 class Producemodule extends Component {
 
@@ -39,12 +40,56 @@ class Producemodule extends Component {
     //     this.setState({otp:event.target.value})
     // }
 
+    //http request to post otp....
+    httppost=(data)=>{
+        const invocation = new XMLHttpRequest();
+        const url = 'http://172.16.0.111:3400/dozip';
+        if(invocation)
+        
+            {
+                console.log("Hello");
+
+            invocation.open('POST', url, true);
+
+            invocation.setRequestHeader('X-PINGOTHER', 'pingpong');
+            invocation.setRequestHeader('Access-Control-Allow-Origin', 'http://172.16.0.111:3400');
+            invocation.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            invocation.onreadystatechange = function() {
+                      if (this.readyState === 4 && this.status === 200) {
+                        // document.getElementById("demo").innerHTML = this.responseText;
+                        console.log(this.responseText);
+                      };
+            }
+            invocation.send(data);
+        }
+        else{console.log("hmmmmmmmm")}
+    }
+
     handleJoinClick = ()=>{
         console.log(this.state.name);
         console.log(this.state.weight);
         console.log(this.state.quantity);
         console.log(this.state.manufacturing);
         console.log(this.state.expiry);
+
+        var len = this.state.quantity;
+        var gen=async ()=>{
+            var api= await web3init();
+            console.log(api);
+            var arr=[];var address;
+            
+            for(let i=0;i<len;i++){
+                console.log(true,this.state.name,this.state.weight,+new Date(this.state.manufacturing+""),+new Date(this.state.expiry+""));
+             address=await api.produceItem(true,this.state.name,this.state.weight,+new Date(this.state.manufacturing+""),+new Date(this.state.expiry+""));
+               arr.push(address);
+            }
+            console.log(arr);
+/////////////////////
+            this.httppost(JSON.stringify({arr}));
+
+            return arr;
+        }
+        gen().then(d=>console.log).catch(err=>console.err);
 
         //web3 create user function call............
         // web3.eth.getAccounts().then((d)=>{
@@ -66,7 +111,7 @@ class Producemodule extends Component {
 
     render() {
         return (
-        <div>
+        <div >
             <div className="producemodule">
             <div className="row">
                 <div className="col-sm-12">
@@ -74,46 +119,55 @@ class Producemodule extends Component {
                         Chain</h3>
                     </div>
                 </div>
-                <form  className="productform" name="productform">
+                <form  className="productform container" name="productform">
 
-                    <h2>Produce items in Blockchain</h2>
+                    <h2 className="boldfont" align="center">Produce items in Blockchain</h2>
 
                     <ul className="noBullet">
-                    <div className="row">
-                    <div className="col-sm-6">
+                    <div className="row ">
+                    <div className="col-sm-6 ">
                         <li>
                             <label htmlFor="name"></label>
-                            <input type="text" className="inputFields" id="name" name="name" placeholder="name" onChange={this.handleNameOnChange} required/>
+                            <input type="text" className="form-control" id="name" name="name" placeholder="name" onChange={this.handleNameOnChange} required/>
                         </li>
                     </div>
                     <div className="col-sm-6">
                         <li>
                             <label htmlFor="weight"></label>
-                            <input type="text" className="inputFields" id="weight" name="weight" placeholder="name" onChange={this.handleWeightOnChange} required/>
+                            <input type="text" className="form-control" id="weight" name="weight" placeholder="Weighteight" onChange={this.handleWeightOnChange} required/>
+                        </li>
+                    </div>
+                    </div>
+                    <div className="row align-items-center">
+                    <div className="col-sm-6 ">
+                        <li>
+                            <br/>
+                            <label className="smallfont" htmlFor="manufacturing">Manufactored date:</label>
+                            <input type="date" className="form-control" id="manufacturing" name="manufacturing" placeholder="manufacturing" onChange={this.handleManOnChange} required/>
+                        </li>
+                    </div>
+                    <div className="col-sm-6">
+                        <li>
+                            <br/>
+                            <label className="smallfont" htmlFor="expiry">Expiry date:</label>
+                            <input type="date" className="form-control" id="expiry" name="expiry" placeholder="expiry" onChange={this.handleExpiryOnChange} required/>
                         </li>
                     </div>
                     </div>
                     <div className="row">
-                    <div className="col-sm-6">
-                        <li>
-                            <label htmlFor="manufacturing"></label>
-                            <input type="date" className="inputFields" id="manufacturing" name="manufacturing" placeholder="manufacturing" onChange={this.handleManOnChange} required/>
-                        </li>
-                    </div>
-                    <div className="col-sm-6">
-                        <li>
-                            <label htmlFor="expiry"></label>
-                            <input type="date" className="InputFields" id="expiry" name="expiry" placeholder="expiry" onChange={this.handleExpiryOnChange} required/>
-                        </li>
-                    </div>
-                    </div>
-                        <li>
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-4">
+                        <li >
                             <label htmlFor="quantity"></label>
-                            <input type="text" className="quantity" id="quantity" name="quantity" placeholder="quantity" onChange={this.handleQuantityOnChange} required/>
+                            <input type="text" className="form-control" id="quantity"  name="quantity" placeholder="quantity" onChange={this.handleQuantityOnChange} required/>
                         </li>
-                        <li id="center-btn">
-                            <input id="join-btn" value="Join" onClick={this.handleJoinClick} />
+                        <br/>
+                        <li id="center-btn" align="center">
+                            <input  className="btn wrap primaryfont extend white" value="Join" onClick={this.handleJoinClick} />
                         </li>
+                    </div>
+        
+                    </div>
                     </ul>
                 </form>            
             </div>

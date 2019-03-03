@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Transact from './transact';
 import Inventry from './inventry';
 // import Batchpage from './batch';
-import Produce from './produce';
+import Produce from './producemodule';
 import Track from './track'
 
 class App extends Component {

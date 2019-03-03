@@ -20,7 +20,9 @@ import web3 from './integration';
 // })();
 import Producemodule from './components/producemodule';
 import Testing from './components/testing';
-
+import InventryCard from './components/inventrycard';
+import Inventry from './components/inventry';
+import Usercard from './components/usercard';
 
 class App extends Component {
 
@@ -33,7 +35,8 @@ class App extends Component {
           <Signup path="/signup"/>
           <Home path='/home/:id'/>
           <Producemodule path='/testingprod'/>
-          <Testing path="/testing"/>
+          <Inventry path="/testing"/>
+          <Usercard path="/usercardtest"/>
         </Router>
       </div>
     );
