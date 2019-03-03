@@ -32,8 +32,9 @@ class Transact extends Component {
     // }
 
     handleClick = ()=>{
-        this.fillingTheInputElements("nitin");
+        // this.fillingTheInputElements("nitin");
         // this.setState({textcontent:"nitin"});
+        
     }
 
   render() {

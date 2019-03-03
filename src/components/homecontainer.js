@@ -19,7 +19,7 @@ class App extends Component {
 
     else if(page === 2){
         return (
-            // <Batch/>
+            //  <BatchComp/>
             <div>batch</div>
           );
     }

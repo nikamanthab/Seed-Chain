@@ -99,15 +99,26 @@ function listInventory() {
         var result = [];
         user.methods.getOwns(account).call().then((d) => {
             console.log(d);
-            d.forEach(async (data) => {
-                try {
-                    console.log(data);
-                    result.push(await item.methods.getdetails(data).call());
-                } catch (err) {
-                    rej(fillErr(err));
-                }
-            });
-            res(result);
+            console.log(d.length);
+            var rest=async function(){
+             for(let data of d){
+                 let dos=await item.methods.getdetails(data).call();
+                 result.push(dos);
+                 if(result.length==d.length){
+                     return result;
+                 }
+             }
+            }
+            rest().then((data)=>res(data));
+            // d.forEach(async (data) => {
+            //     try {
+            //         console.log(data);
+            //         result.push(await item.methods.getdetails(data).call());
+            //     } catch (err) {
+            //         rej(fillErr(err));
+            //     }
+            // });
+            // res(result);
         }).catch(err => rej(fillErr(err)));
     })
 };

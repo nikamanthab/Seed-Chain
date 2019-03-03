@@ -3,7 +3,6 @@ import UserCard from './usercard'
 class Track extends Component {
  
   state = {
-    search:""
   }
   // componentDidMount = () =>{
   //     web3init().then((d)=>{

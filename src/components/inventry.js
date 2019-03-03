@@ -10,6 +10,9 @@ class Inventry extends Component {
     //     })
     // }
 
+    state={
+        n:[]
+    }
     componentDidMount(){
         // web3init().then((api)=>{
         //     console.log(api.account);
@@ -29,22 +32,28 @@ class Inventry extends Component {
             
             console.log(api.account);
             return api.listInventory();
-        }).then((data)=>{console.log("hmmm",data)}).catch(err=>{console.log(err)});
+        }).then((data)=>{
+            console.log("hmmm",Array.isArray(data));
+            console.log(data);
+            this.setState({n:data});
+        }).catch(err=>{console.log(err)});
     }
-    handleTrackButton = () =>{
-
-    }
+    
   render() {
-      let n=["watermelon","onion seed","garlic peals"];
+      let names = this.state.n;
+    //   console.log("arrrr",arr)
+      console.log(names["0"],names.length)
       return(
           <div>
               <h1>Inventry</h1>
               <div>
               {
-                  n.map((val)=>{
+                  names.map((val,i)=>{
                       return(
-                          <InventryCard handleTrackButton={this.handleTrackButton} name={val}/>
-                      )
+                          <div>
+                          <InventryCard  x={names[i][0]} weight={names[i][1]} mfd={names[i][2]} exp={names[i][3]} type={names[i][4]}/>
+                            </div>
+                       )
                   })
               }
             </div>
