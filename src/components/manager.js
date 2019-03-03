@@ -84,7 +84,7 @@ class Manager extends Component {
     let urllen = window.location.href.split('/').length;
     let email = window.location.href.split('/')[urllen-2];
     let uname = window.location.href.split('/')[urllen-1];
-    console.log("aaaaaa",this.state.accountid);
+    console.log(this.state.accountid);
     let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${this.state.accountid}-${uname}-verifieduser`;
     console.log(url);
     return (
@@ -107,12 +107,14 @@ class Manager extends Component {
                 <button onClick={this.handleLink2click} style={this.button}>Batch</button>
                 </div>
                 <div className="row">
-                <button onClick={this.handleLink3click} style={this.button}>Inventory</button>
+                <button onClick={this.handleLink3click} style={this.button}>Inventry</button>
                 </div>
                 <div className="row">
                 <button onClick={this.handleLink4click} style={this.button}>Transact</button>
                 </div>
-                
+                <div className="row">
+                <button onClick={this.handleLink5click} style={this.button}>Track</button>
+                </div>
                 
                 <div className="row">
                 <button className="align-bottom" onClick={this.handleLogOutButton} style={this.button}>Logout</button>

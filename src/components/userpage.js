@@ -26,7 +26,7 @@ class Userpage extends Component {
     //http request to post otp....
     httppostotp=(otp)=>{
         const invocation = new XMLHttpRequest();
-        const url = 'http://172.16.0.111:3400/sendotp';
+        const url = 'http://192.168.43.74:3400/sendotp';
         if(invocation)
         
             {

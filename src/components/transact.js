@@ -91,6 +91,22 @@ class Transact extends Component {
     // }
 
 
+    handleJoinClick = ()=>{
+        web3init().then((api)=>{
+            let hm = this.state;
+           let s=  hm.sender
+           let r = hm.receiver
+           let p = hm.productid
+            api.transact(r,p,123).then((msg)=>{console.log(msg)})
+
+
+        })
+
+
+    }
+
+
+
   render() {
       return(
           <div className="container">

@@ -62,7 +62,7 @@ function transact(address, product, date) {
         user.methods.transact(address, product).send({
             from: account
         }).then(() => {
-            item.methods.transact(address, product, date).send({
+            item.methods.transact(address, product, date,account).send({
                 from: account
             }).then((d) => {
                 item.methods.message().call().then((msg) => res(msg)).catch((err) => rej(""));
@@ -151,7 +151,7 @@ function finalize(arr) {
     return new Promise((res, rej) => {
         arr.forEach(async (data) => {
             try {
-                await item.methods.finalize(data).send({
+                await item.methods.finalize(data,account).send({
                     from: account
                 });
             } catch (err) {
@@ -165,10 +165,14 @@ function finalize(arr) {
 function track(address) {
     return new Promise((res, rej) => {
         var result = [];
-        item.methods.track(address).call().then((data) => {
+        item.methods.track(address).send({from:account}).then(() => {
+            console.log("dummy")
             item.methods.trackChain().call().then((data) => {
+                console.log(data);
                 data.forEach(async (d) => {
+                    console.log("hell788o")
                     result.push(await getUserInfo(d));
+                    console.log(result);
                 })
                 res(result);
             }).catch("");
